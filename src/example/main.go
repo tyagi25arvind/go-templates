@@ -1,7 +1,20 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"html/template"
+	"os"
+)
 
 func main() {
-	fmt.Println("Hello World")
+	templateString := `Leonade Stand Supply`
+	t, err := template.New("title").Parse(templateString)
+	if err != nil {
+		fmt.Println(err)
+	}
+	err = t.Execute(os.Stdout, nil)
+	if err != nil {
+		fmt.Println(err)
+	}
+
 }
